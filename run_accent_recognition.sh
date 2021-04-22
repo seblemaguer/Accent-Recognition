@@ -76,7 +76,7 @@ fi
 data=$1 # 
 exp=$2 # 
 train_set="train"
-recog_set="cv_all test"
+recog_set="cv_all" # test
 valid_set="valid"
 
 
@@ -166,7 +166,7 @@ if [ ! -z $step04 ]; then
 fi
 
 # pretrained asr model, if you want to use asr initialization the accent recognition encoder, plase set the "pretrained_model" variable to you own path
-pretrained_model=/home/maison2/lid/zjc/w2020/AESRC2020/result/track2-accent-160/train_12enc_6dec_pytorch/results/model.val5.avg.best
+pretrained_model=""
 if [ ! -z $step05 ]; then
     train_set=train
     elayers=12
@@ -212,9 +212,9 @@ fi
 if [ ! -z $step06 ]; then
     echo "stage 06: Decoding"
     nj=100
-    for expname in train_3_layers_init_accent_pytorch;do
+    for expname in train_3_layers_pytorch; do
     expdir=$exp/$expname
-    for recog_set in test cv_all;do
+    for recog_set in cv_all;do
     use_valbest_average=true
     if [[ $(get_yaml.py ${train_track1_config} model-module) = *transformer* ]]; then
         # Average accent recognition models
