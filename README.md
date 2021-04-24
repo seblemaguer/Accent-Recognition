@@ -20,21 +20,21 @@
     `run_accent_recogntion.sh` is used to train a accent recognition model.
     Before running, you need to first put the model file(models/e2e_asr_transformer_accent.py) to your espnet directory.
 ```
-eg: 
-  move `models/e2e_asr_transformer_accent.py` to `/your espnet localtion/espnet/nets/pytorch_backend` 
-  move `models/e2e_asr_transformer_accent_with_attention.py` to `/your espnet localtion/espnet/nets/pytorch_backend` 
+eg:
+  move `models/e2e_asr_transformer_accent.py` to `/your espnet localtion/espnet/nets/pytorch_backend`
+  move `models/e2e_asr_transformer_accent_with_attention.py` to `/your espnet localtion/espnet/nets/pytorch_backend`
 ```
   2. step by step
-    The overall code is divided into four parts, including feature extraction, JSON file generation, model training and decoding. 
-    The model training is divided into two parts, using ASR init(step05) and not using ASR init(step04). 
-    You can control the steps by changing the value of the step variable. 
+    The overall code is divided into four parts, including feature extraction, JSON file generation, model training and decoding.
+    The model training is divided into two parts, using ASR init(step05) and not using ASR init(step04).
+    You can control the steps by changing the value of the step variable.
 
 ```
-egs: 
-  bash run_accent_recogntion.sh --nj 20 --steps 1-2 data exp
-  bash run_accent_recogntion.sh --nj 20 --steps 3 data exp
-  bash run_accent_recogntion.sh --nj 20 --steps 4 data exp
-  bash run_accent_recogntion.sh --nj 20 --steps 6 data exp
+egs:
+  bash run_accent_recognition.sh --nj 20 --steps 1-2 data exp
+  bash run_accent_recognition.sh --nj 20 --steps 3 data exp
+  bash run_accent_recognition.sh --nj 20 --steps 4 data exp
+  bash run_accent_recognition.sh --nj 20 --steps 6 data exp
 ```
   3. ASR initialization
   In order to get better results, the encoder of ASR model can be used to initialize the encoder of accent recognition model.
